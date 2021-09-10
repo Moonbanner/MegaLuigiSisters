@@ -1,0 +1,6 @@
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\TestGame.vcxproj.CopyComplete
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\TestGame.exe
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\D3DCompiler_43.dll
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\d3dx9d_43.dll
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\d3dx10d_43.dll
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\TestGame\x64\Debug\d3dx11d_43.dll
