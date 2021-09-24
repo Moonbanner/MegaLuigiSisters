@@ -24,4 +24,12 @@ public:
 	void Render();
 };
 
-
+class CGoomba : public CGameObject
+{
+protected:
+	float vx;
+public:
+	CGoomba(float x, float y, float vx);
+	void Update(DWORD dt);
+	void Render();
+};
