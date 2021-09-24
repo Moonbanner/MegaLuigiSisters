@@ -35,6 +35,8 @@
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
+#define BRICK_WIDTH 16
+#define BRICK_HEIGHT 16
 
 using namespace std;
 
@@ -73,6 +75,7 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void LoadResources()
 {
+	int i;
 	CGame * game = CGame::GetInstance();
 	texBrick = game->LoadTexture(TEXTURE_PATH_BRICK);
 	texMario = game->LoadTexture(TEXTURE_PATH_MARIO);
@@ -91,10 +94,13 @@ void LoadResources()
 	//
 
 	//
-	// int x = BRICK_X;
-	// for(i)
-	//		... new CGameObject(x,.... 
-	//		x+=BRICK_WIDTH;
+
+	/*int x = BRICK_X;
+	for (i = 0; i < 11; i++)
+	{
+		brick = new CGameObject(x, 
+			x += BRICK_WIDTH;
+	}*/
 }
 
 /*
