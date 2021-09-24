@@ -1,7 +1,8 @@
-﻿  debug.cpp
-  Game.cpp
-  GameObject.cpp
-  main.cpp
-D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(78,6): warning C4101: 'i': unreferenced local variable
-  Generating Code...
+﻿  main.cpp
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(53,1): warning C4005: 'BRICK_WIDTH': macro redefinition
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(38): message : see previous definition of 'BRICK_WIDTH'
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(54,1): warning C4005: 'BRICK_HEIGHT': macro redefinition
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(39): message : see previous definition of 'BRICK_HEIGHT'
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(55,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(82,6): warning C4101: 'i': unreferenced local variable
   Skeleton.vcxproj -> D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Debug\Skeleton.exe

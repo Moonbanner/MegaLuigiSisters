@@ -50,6 +50,10 @@ CMario *mario;
 CBrick *brick;
 #define BRICK_X 10.0f
 #define BRICK_Y 120.0f
+#define BRICK_WIDTH 16.0f
+#define BRICK_HEIGHT 16.0f
+int NumOfBricks = 1 + SCREEN_WIDTH / BRICK_WIDTH;
+CBrick** arrBrick = new CBrick * [NumOfBricks];
 
 LPTEXTURE texMario = NULL;
 LPTEXTURE texBrick = NULL;
@@ -85,6 +89,11 @@ void LoadResources()
 	//texMisc = game->LoadTexture(MISC_TEXTURE_PATH);
 
 	mario = new CMario(MARIO_START_X, MARIO_START_Y, MARIO_START_VX, MARIO_START_VY, texMario);
+	for (int i = 0; i < NumOfBricks; i++)
+	{
+		arrBrick[i] = new CBrick(BRICK_WIDTH * i + 8.0f, BRICK_Y, texBrick);
+	}
+
 	brick = new CBrick(BRICK_X, BRICK_Y, texBrick);
 
 	
@@ -94,13 +103,10 @@ void LoadResources()
 	//
 
 	//
-
-	/*int x = BRICK_X;
-	for (i = 0; i < 11; i++)
-	{
-		brick = new CGameObject(x, 
-			x += BRICK_WIDTH;
-	}*/
+	// int x = BRICK_X;
+	// for(i)
+	//		... new CGameObject(x,.... 
+	//		x+=BRICK_WIDTH;
 }
 
 /*
@@ -143,7 +149,10 @@ void Render()
 		FLOAT NewBlendFactor[4] = { 0,0,0,0 };
 		pD3DDevice->OMSetBlendState(g->GetAlphaBlending(), NewBlendFactor, 0xffffffff);
 
-		brick->Render();
+		for (int i = 0; i < NumOfBricks; i++)
+		{
+			arrBrick[i]->Render();
+		}
 		mario->Render();
 
 		// Uncomment this line to see how to draw a porttion of a texture  
