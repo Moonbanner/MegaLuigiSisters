@@ -1,0 +1,7 @@
+﻿  main.cpp
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(114,75): error C2664: 'void DebugOutTitle(wchar_t *,...)': cannot convert argument 1 from 'const wchar_t [27]' to 'wchar_t *'
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(114,16): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\debug.h(35,6): message : see declaration of 'DebugOutTitle'
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(188,102): error C2664: 'void DebugOut(wchar_t *,...)': cannot convert argument 1 from 'const wchar_t [53]' to 'wchar_t *'
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\main.cpp(188,12): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Skeleton\debug.h(28,6): message : see declaration of 'DebugOut'
