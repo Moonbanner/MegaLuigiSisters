@@ -130,7 +130,7 @@ void CMario::SetState(int state)
 		break;
 			
 	case MARIO_STATE_RELEASE_JUMP:
-		if (vy < 0) vy += MARIO_JUMP_SPEED_Y/2;
+		if (vy < 0) vy += MARIO_JUMP_SPEED_Y/2;         //'+' when releasing jump because y axis is inverted
 		break;
 
 	case MARIO_STATE_SIT: 
