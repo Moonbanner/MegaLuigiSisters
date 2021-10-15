@@ -23,6 +23,7 @@
     <ProjectGuid>{D49CA5EE-657C-4B7C-9D5E-44EAEA9A0C36}</ProjectGuid>
     <RootNamespace>My03KeyboardStates</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>03-Keyboard_States</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
