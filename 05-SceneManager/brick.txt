@@ -7,6 +7,7 @@
 #gravel - above surface ground blocks
 20100	1	52	16	67	30
 
+####green tube with no travel-thru feature implemented####
 #left side of tube's opening (upwards)
 20700	171	69	186	84	30
 #right side of tube's opening (upwards)
@@ -16,9 +17,9 @@
 #right side of tube's opening (downwards)
 20850	188	103	203	118	30
 #left side of tube's body
-20900	172	86	187	101	30
+20900	171	86	186	101	30
 #right side of tube's body
-20950	188	86	203	101	30
+20950	188	86	202	101	30
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]

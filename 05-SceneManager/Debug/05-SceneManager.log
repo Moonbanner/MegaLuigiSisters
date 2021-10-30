@@ -1,7 +1,2 @@
-﻿  PlayScene.cpp
-D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(81,20): warning C4018: '<': signed/unsigned mismatch
-D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(297,20): warning C4018: '<': signed/unsigned mismatch
-D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(322,20): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-  Generating Code...
+﻿  VerticalPlatform.cpp
   05-SceneManager.vcxproj -> D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Debug\05-SceneManager.exe
