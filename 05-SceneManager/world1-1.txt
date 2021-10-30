@@ -1,0 +1,25 @@
+# list of object assets to load in this scene
+[ASSETS]
+mario.txt
+brick.txt
+coin.txt
+goomba.txt
+cloud.txt
+ground.txt
+#
+[OBJECTS]
+# type	x	y	extra_settings per object type
+# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas
+# See OBJECT_TYPE constants in AssetIDs.h
+
+# MARIO
+0	50	350
+
+#Platform
+5	10	400	16	16	39	61000	62000	63000
+5	634	384	16	16	29	61000	62000	63000
+5	634	400	16	16	29	61500	62500	63500
+5	1162	400	16	16	22	61000	62000	63000
+5	1546	400	16	16	5	61000	62000	63000
+5	1674	400	16	16	36	61000	62000	63000
+5	2266	400	16	16	40	61000	62000	63000
