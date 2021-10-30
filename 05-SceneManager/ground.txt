@@ -1,12 +1,15 @@
 # id	left	top	right	bottom	texture_id
 [SPRITES]
+#GROUND_SURFACE
 61000	1	1	16	16	30
 62000	18	1	33	16	30
 63000	35	1	50	16	30
-
+#GROUND_UNDER
 61500	1	18	16	33	30
 62500	18	18	33	33	30
 63500	35	18	50	33	30
+#GROUND_GRAVEL (ground blocks above the surface)
+60100	1	52	16	67	30
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
