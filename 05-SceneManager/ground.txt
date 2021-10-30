@@ -8,8 +8,6 @@
 61500	1	18	16	33	30
 62500	18	18	33	33	30
 63500	35	18	50	33	30
-#GROUND_GRAVEL (ground blocks above the surface)
-60100	1	52	16	67	30
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
