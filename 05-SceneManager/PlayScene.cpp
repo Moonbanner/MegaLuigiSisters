@@ -10,6 +10,7 @@
 #include "Coin.h"
 #include "Platform.h"
 #include "VerticalPlatform.h"
+#include "HollowPlatform.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -128,7 +129,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	case OBJECT_TYPE_PLATFORM:
 	{
-
 		float cell_width = (float)atof(tokens[3].c_str());
 		float cell_height = (float)atof(tokens[4].c_str());
 		int length = atoi(tokens[5].c_str());
@@ -147,7 +147,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	case OBJECT_TYPE_VERTICAL_PLATFORM:
 	{
-
 		float cell_width = (float)atof(tokens[3].c_str());
 		float cell_height = (float)atof(tokens[4].c_str());
 		int height = atoi(tokens[5].c_str());
@@ -157,14 +156,39 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		obj = new CVerticalPlatform
 		(
-			x, y,
-			cell_width, cell_height, height,
+			x, y, cell_width, cell_height, height,
 			sprite_top, sprite_middle, sprite_bot
 		);
 
 		break;
 	}
 
+	case OBJECT_TYPE_HOLLOW_PLATFORM:
+	{
+		float cell_width = (float)atof(tokens[3].c_str());
+		float cell_height = (float)atof(tokens[4].c_str());
+		int length = atoi(tokens[5].c_str());
+		int height = atoi(tokens[6].c_str());
+		int sprite_topLeft = atoi(tokens[7].c_str());
+		int sprite_topBody = atoi(tokens[8].c_str());
+		int sprite_topRight = atoi(tokens[9].c_str());
+		int sprite_botLeft = atoi(tokens[10].c_str());
+		int sprite_botBody = atoi(tokens[11].c_str());
+		int sprite_botRight = atoi(tokens[12].c_str());
+		int sprite_midLeft = atoi(tokens[13].c_str());
+		int sprite_midBody = atoi(tokens[14].c_str());
+		int sprite_midRight = atoi(tokens[15].c_str());
+
+		obj = new CHollowPlatform
+		(
+			x, y, cell_width, cell_height, length, height,
+			sprite_topLeft, sprite_topBody, sprite_topRight,
+			sprite_botLeft, sprite_botBody, sprite_botRight,
+			sprite_midLeft, sprite_midBody, sprite_midRight
+		);
+
+		break;
+	}
 
 	case OBJECT_TYPE_PORTAL:
 	{

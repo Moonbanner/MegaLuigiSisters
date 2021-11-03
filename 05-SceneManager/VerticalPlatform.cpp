@@ -22,7 +22,7 @@ void CVerticalPlatform::Render()
 	if (height > 1)
 		s->Get(this->spriteIdBot)->Draw(x, yy);
 
-	/*RenderBoundingBox()*/;
+	/*RenderBoundingBox();*/
 }
 
 void CVerticalPlatform::GetBoundingBox(float& l, float& t, float& r, float& b)

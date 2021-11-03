@@ -7,6 +7,8 @@
 #include "Goomba.h"
 #include "Coin.h"
 #include "Portal.h"
+#include "Mushroom.h"
+#include "Brick.h"
 
 #include "Collision.h"
 
@@ -54,6 +56,10 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
+	else if (dynamic_cast<CMushroom*>(e->obj))
+		OnCollisionWithMushroom(e);
+	else if (dynamic_cast<CBrick*>(e->obj))
+		OnCollisionWithBrick(e);
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -90,6 +96,29 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	}
 }
 
+void CMario::OnCollisionWithBrick(LPCOLLISIONEVENT e)
+{
+	CBrick* brick = dynamic_cast<CBrick*>(e->obj);
+
+	if (e->ny > 0)
+	{
+		if (brick->GetState() != BRICK_STATE_BBRICK)
+		{
+			if (brick->NoItem())
+			{
+				if (level == MARIO_LEVEL_SMALL)
+					brick->SetState(BRICK_STATE_BOUNCE);
+				else if (level == MARIO_LEVEL_BIG)
+					brick->SetState(BRICK_STATE_BREAK);
+			}
+		}
+		else if (brick->GetTimesLeftToBounce() > 1)
+			brick->SetState(BRICK_STATE_BOUNCE)
+		else
+			brick->SetState(BRICK_STATE_BBRICK);
+	}
+}
+
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 {
 	e->obj->Delete();
@@ -101,6 +130,15 @@ void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)
 	CPortal* p = (CPortal*)e->obj;
 	CGame::GetInstance()->InitiateSwitchScene(p->GetSceneId());
 }
+
+void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
+{
+	CMushroom* mushroom = dynamic_cast<CMushroom*>(e->obj);
+	if (mushroom->GetType() == MUSHROOM_TYPE_RED)
+		SetLevel(MARIO_LEVEL_BIG);
+	e->obj->Delete();
+}
+
 
 //
 // Get animation ID for small Mario
