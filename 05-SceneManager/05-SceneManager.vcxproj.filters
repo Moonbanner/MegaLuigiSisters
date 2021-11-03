@@ -81,7 +81,7 @@
     <ClCompile Include="HollowPlatform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mushroom.cpp">
+    <ClCompile Include="HollowPlatformBBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +161,7 @@
     <ClInclude Include="HollowPlatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mushroom.h">
+    <ClInclude Include="HollowPlatformBBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

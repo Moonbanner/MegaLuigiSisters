@@ -11,6 +11,7 @@
 #include "Platform.h"
 #include "VerticalPlatform.h"
 #include "HollowPlatform.h"
+#include "HollowPlatformBBox.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -190,6 +191,18 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		break;
 	}
 
+	case OBJECT_TYPE_HOLLOW_PLATFORM_BBOX:
+	{
+		float cell_width = (float)atof(tokens[3].c_str());
+		float cell_height = (float)atof(tokens[4].c_str());
+		int length = atoi(tokens[5].c_str());
+		int height = atoi(tokens[6].c_str());
+
+		obj = new CHollowPlatformBBox(x, y, cell_width, cell_height, length, height);
+
+		break;
+	}
+
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = (float)atof(tokens[3].c_str());
@@ -207,7 +220,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	// General object setup
 	obj->SetPosition(x, y);
-
 
 	objects.push_back(obj);
 }
