@@ -2,6 +2,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Goomba.h"
+#include "HollowPlatformBBox.h"
 
 #define KOOPA_GRAVITY 0.002f
 #define KOOPA_WALKING_SPEED 0.05f
@@ -25,7 +26,7 @@ class CKoopa : public CGameObject
 protected:
 	float ax;
 	float ay;
-
+	float left, top, right, bot;
 	ULONGLONG die_start;
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);

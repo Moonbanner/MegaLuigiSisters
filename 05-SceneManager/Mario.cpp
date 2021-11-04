@@ -61,8 +61,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithPortal(e);
 	else if (dynamic_cast<CMushroom*>(e->obj))
 		OnCollisionWithMushroom(e);
-	//else if (dynamic_cast<CBrick*>(e->obj))
-	//	OnCollisionWithBrick(e);
+	else if (dynamic_cast<CBrick*>(e->obj))
+		OnCollisionWithBrick(e);
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
@@ -172,28 +172,15 @@ void CMario::OnCollisionWithKoopa(LPCOLLISIONEVENT e)
 	}
 }
 
-//void CMario::OnCollisionWithBrick(LPCOLLISIONEVENT e)
-//{
-//	CBrick* brick = dynamic_cast<CBrick*>(e->obj);
-//
-//	if (e->ny > 0)
-//	{
-//		if (brick->GetState() != BRICK_STATE_BBRICK)
-//		{
-//			if (brick->NoItem())
-//			{
-//				if (level == MARIO_LEVEL_SMALL)
-//					brick->SetState(BRICK_STATE_BOUNCE);
-//				else if (level == MARIO_LEVEL_BIG)
-//					brick->SetState(BRICK_STATE_BREAK);
-//			}
-//		}
-//		else if (brick->GetbouncesLeft() > 1)
-//			brick->SetState(BRICK_STATE_BOUNCE)
-//		else
-//			brick->SetState(BRICK_STATE_BBRICK);
-//	}
-//}
+void CMario::OnCollisionWithBrick(LPCOLLISIONEVENT e)
+{
+	CBrick* brick = dynamic_cast<CBrick*>(e->obj);
+	if (brick->GetState() == BRICK_STATE_QUESTIONBRICK)
+	{
+		if (e->ny > 0) brick->SetState(BRICK_STATE_EMPTY);
+	}
+
+}
 
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 {

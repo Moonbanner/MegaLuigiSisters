@@ -5,6 +5,8 @@ CKoopa::CKoopa(float x, float y, int state) :CGameObject(x, y)
 	this->ax = 0;
 	this->ay = KOOPA_GRAVITY;
 	vx = 0;
+	left = 0;
+	right = 2000;
 	die_start = -1;
 	SetState(state);
 }
@@ -52,7 +54,14 @@ void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 			goomba->SetState(GOOMBA_STATE_DIE);
 		}
 	}
-
+	if (state == KOOPA_STATE_WALKING)
+	{
+		if (dynamic_cast<CHollowPlatformBBox*>(e->obj))
+		{
+			CHollowPlatformBBox* platform = dynamic_cast<CHollowPlatformBBox*>(e->obj);
+			platform->GetBoundingBox(left, top, right, bot);
+		}
+	}
 	if (!e->obj->IsBlocking()) return;
 	if (e->ny != 0)
 	{
@@ -68,11 +77,22 @@ void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 
 void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	vy += ay * dt;
-	vx += ax * dt;
+	if (!isDeleted)
+	{
+		vy += ay * dt;
+		vx += ax * dt;
+		if (state == KOOPA_STATE_WALKING)
+		{
+			if (x < left + 4 || x > right - 4)
+			{
+				vx = -vx;
+			}
+		}
 
-	CGameObject::Update(dt, coObjects);
-	CCollision::GetInstance()->Process(this, dt, coObjects);
+		CGameObject::Update(dt, coObjects);
+		CCollision::GetInstance()->Process(this, dt, coObjects);
+
+	}
 }
 
 void CKoopa::Render()

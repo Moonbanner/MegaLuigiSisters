@@ -143,15 +143,16 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj = new CKoopa(x, y, state); break;
 	}
 
-	case OBJECT_TYPE_BRICK: 
+	case OBJECT_TYPE_BRICK:
 	{
-		int ID_ANI_BRICK = atoi(tokens[3].c_str());
-
-		obj = new CBrick(x, y, ID_ANI_BRICK); break;
+		int aniID = atoi(tokens[3].c_str());
+		int state = atoi(tokens[4].c_str());
+		obj = new CBrick(x, y, aniID, state); break;
 	}
+
 	case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
 
-	case OBJECT_TYPE_MUSHROOM_RED: 
+	case OBJECT_TYPE_MUSHROOM:
 	{
 		int width = (int)atoi(tokens[3].c_str());
 		int height = (int)atoi(tokens[4].c_str());
@@ -357,9 +358,20 @@ void CPlayScene::Update(DWORD dt)
 
 	if (cx < 0) cx = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 0.0f /*(cy)*/);
+	CGame::GetInstance()->SetCamPos(cx, 180.0f /*(cy)*/);
 
 	PurgeDeletedObjects();
+}
+
+void CPlayScene::AddObject(LPGAMEOBJECT o)
+{
+	int pos = 0;
+	for (int i = 0; i < objects.size(); i++)
+	{
+		if (dynamic_cast<CHollowPlatform*>(objects[i]))
+			pos++;
+	}
+	objects.insert(objects.begin() + pos, o);
 }
 
 void CPlayScene::Render()

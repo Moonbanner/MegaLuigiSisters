@@ -1,13 +1,14 @@
+
 #pragma once
 #include "GameObject.h"
 #include "Mario.h"
 
-enum MushroomStates
-{
-	MUSHROOM_STATE_IDLE,
-	MUSHROOM_STATE_DROP,
-	MUSHROOM_STATE_BOUNCING,
-};
+
+
+#define	MUSHROOM_STATE_IDLE 100
+#define	MUSHROOM_STATE_DROP 101
+#define	MUSHROOM_STATE_BOUNCING 102
+
 
 enum MushroomTypes
 {
@@ -36,7 +37,7 @@ class CMushroom : public CGameObject
 	void Render();
 
 	int IsCollidable() { return 1; };
-	int IsBlocking() { return 0; }
+	int IsBlocking();
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
 	//void OnCollisionWithBrick(LPCOLLISIONEVENT e);

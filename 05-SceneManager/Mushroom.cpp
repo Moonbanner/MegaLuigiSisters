@@ -1,3 +1,4 @@
+
 #include "Mushroom.h"
 #include "Goomba.h"
 #include "Mario.h"
@@ -7,10 +8,16 @@
 
 void CMushroom::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x - width/2;
-	t = y - height/2;
+	l = x - width / 2;
+	t = y - height / 2;
 	r = l + width;
 	b = t + height;
+}
+
+int CMushroom::IsBlocking()
+{
+	if (state == MUSHROOM_STATE_IDLE) return 1;
+	else return 0;
 }
 
 void CMushroom::OnNoCollision(DWORD dt)
@@ -72,7 +79,6 @@ void CMushroom::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		//unimplemented
 	  /*if (state == MUSHROOM_STATE_BOUNCING && vx != 0)
 		{
-
 		}*/
 
 		CCollision::GetInstance()->Process(this, dt, coObjects);
