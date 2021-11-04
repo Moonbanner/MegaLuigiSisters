@@ -9,13 +9,16 @@ cloud.txt
 ground.txt
 hollow_platform.txt
 mushroom.txt
+background.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
-# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas, 4 = coin, 411 = red mushroom
+# type: -1 = background, 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas, 4 = coin, 411 = red mushroom
 # 5 = PLATFORM, 501 = VERTICAL PLATFORM, 502 = HOLLOW PLATFORM, 503 = HOLLOW PLATFORM BBOX
 # See OBJECT_TYPE constants in AssetIDs.h
 
+#BACKGROUND
+-1	1242	194	100000
 #HOLLOW PLATFORM
 #ID	x	y	cWidth	cHeight	length	height	tLeft	tBody	tRight	bLeft	bBody	bRight	mLeft	mBody	mRight
 502	282	320	16	16	3	5	71000	71010	71090	71900	71910	71990	71100	71110	71190
@@ -33,10 +36,12 @@ mushroom.txt
 502	2186	256	16	16	3	9	72000	72010	72090	72900	72910	72990	72100	72110	72190
 502	2154	352	16	16	3	3	70000	70010	70090	70900	70910	70990	70100	70110	70190
 
-# MARIO
-0	100	280
+# MARIO, GOOMBAS AND KOOPAS
+0	2300	280
 
-2	200	280
+2	200	280	101
+
+3	400	365	100
 
 #HOLLOW PLATFORM BBOX
 #ID	x	y	cWidth	cHeight	length	height
@@ -83,7 +88,7 @@ mushroom.txt
 1	2282	288	10100
 
 #Coins and Mushrooms
-411	300	250	16	16	14500
+#411	300	250	16	16	14500
 
 #Platform
 #ID	x	y	cWidth	cHeight	len/hei	idBegin	idMid	idEnd
@@ -107,7 +112,7 @@ mushroom.txt
 5	1978	368	16	16	5	20002	20002	20002
 5	1994	352	16	16	4	20002	20002	20002
 
-5	2266	400	16	16	40	61000	62000	63000
+5	2266	400	16	16	14	61000	62000	63000
 501	2266	96	16	16	12	20700	20900	20900
 501	2282	96	16	16	12	20750	20950	20950
 501	2266	368	16	16	2	20900	20900	20900

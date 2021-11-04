@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "Textures.h"
 #include "Sprites.h"
+
 #include "Portal.h"
 #include "Coin.h"
 #include "Platform.h"
@@ -13,6 +14,7 @@
 #include "HollowPlatform.h"
 #include "HollowPlatformBBox.h"
 #include "Mushroom.h"
+#include "Background.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -109,6 +111,15 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	switch (object_type)
 	{
+	case OBJECT_TYPE_BACKGROUND:
+	{
+		int ID_SPRITE = atoi(tokens[3].c_str());
+
+		obj = new CBackground(x, y, ID_SPRITE);
+
+		break;
+
+	}
 	case OBJECT_TYPE_MARIO:
 		if (player!=NULL) 
 		{

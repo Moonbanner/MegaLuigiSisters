@@ -37,10 +37,10 @@ void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 
 	if (dynamic_cast<CGoomba*>(e->obj)) return;
-	/*if (dynamic_cast<CKoopas*>(e->obj))
+	/*if (dynamic_cast<CKoopa*>(e->obj))
 	{
-		CKoopas* koopas = dynamic_cast<CKoopas*>(e->obj);
-		if (koopas->GetState() == KOOPAS_STATE_SHELL_MOVE)
+		CKoopa* koopa = dynamic_cast<CKoopa*>(e->obj);
+		if (koopa->GetState() == KOOPA_STATE_SHELL_MOVE)
 			SetState(GOOMBA_STATE_DIE);
 	}*/
 	if (!e->obj->IsBlocking()) return;
@@ -76,7 +76,7 @@ void CGoomba::Render()
 	int aniId = ID_ANI_GOOMBA_WALKING;
 	if (state == GOOMBA_STATE_WINGED)
 	{
-		aniId = ID_ANI_GOOMBA_WING;
+		aniId = ID_ANI_GOOMBA_WINGED;
 	}
 	if (state == GOOMBA_STATE_DIE)
 	{
@@ -84,7 +84,7 @@ void CGoomba::Render()
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CGoomba::SetState(int state)
