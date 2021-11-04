@@ -12,6 +12,7 @@
 #include "VerticalPlatform.h"
 #include "HollowPlatform.h"
 #include "HollowPlatformBBox.h"
+#include "Mushroom.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -119,7 +120,18 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
-	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x,y); break;
+	case OBJECT_TYPE_GOOMBA:
+	{
+		int state = atoi(tokens[3].c_str());
+		obj = new CGoomba(x, y, state); break;
+	}
+
+	case OBJECT_TYPE_KOOPA:
+	{
+		int state = atoi(tokens[3].c_str());
+		obj = new CKoopa(x, y, state); break;
+	}
+
 	case OBJECT_TYPE_BRICK: 
 	{
 		int ID_ANI_BRICK = atoi(tokens[3].c_str());
@@ -127,6 +139,17 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj = new CBrick(x, y, ID_ANI_BRICK); break;
 	}
 	case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
+
+	case OBJECT_TYPE_MUSHROOM_RED: 
+	{
+		int width = (int)atoi(tokens[3].c_str());
+		int height = (int)atoi(tokens[4].c_str());
+		int ID_ANI_MUSHROOM = atoi(tokens[5].c_str());
+
+		obj = new CMushroom(x, y, width, height, MUSHROOM_TYPE_RED, ID_ANI_MUSHROOM);
+
+		break;
+	}
 
 	case OBJECT_TYPE_PLATFORM:
 	{

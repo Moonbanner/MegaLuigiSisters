@@ -7,8 +7,9 @@
 #include "Goomba.h"
 #include "Coin.h"
 #include "Portal.h"
-//#include "Mushroom.h"
+#include "Mushroom.h"
 #include "Brick.h"
+#include "Koopa.h"
 
 #include "Collision.h"
 
@@ -52,12 +53,14 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 
 	if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
+	if (dynamic_cast<CKoopa*>(e->obj))
+		OnCollisionWithKoopa(e);
 	else if (dynamic_cast<CCoin*>(e->obj))
 		OnCollisionWithCoin(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
-	//else if (dynamic_cast<CMushroom*>(e->obj))
-	//	OnCollisionWithMushroom(e);
+	else if (dynamic_cast<CMushroom*>(e->obj))
+		OnCollisionWithMushroom(e);
 	//else if (dynamic_cast<CBrick*>(e->obj))
 	//	OnCollisionWithBrick(e);
 }
@@ -71,8 +74,16 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	{
 		if (goomba->GetState() != GOOMBA_STATE_DIE)
 		{
-			goomba->SetState(GOOMBA_STATE_DIE);
-			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			if (goomba->GetState() == GOOMBA_STATE_WINGED)
+			{
+				goomba->SetState(GOOMBA_STATE_WALKING);
+				vy = -MARIO_JUMP_DEFLECT_SPEED;
+			}
+			else
+			{
+				goomba->SetState(GOOMBA_STATE_DIE);
+				vy = -MARIO_JUMP_DEFLECT_SPEED;
+			}
 		}
 	}
 	else // hit by Goomba
@@ -92,6 +103,71 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 					SetState(MARIO_STATE_DIE);
 				}
 			}
+		}
+	}
+}
+
+void CMario::OnCollisionWithKoopa(LPCOLLISIONEVENT e)
+{
+	CKoopa* koopa = dynamic_cast<CKoopa*>(e->obj);
+
+	// jump on top >> deflect a bit 
+	if (e->ny < 0)
+	{
+		if (koopa->GetState() == KOOPA_STATE_WALKING)
+		{
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			koopa->SetState(KOOPA_STATE_SHELL_STAND);
+		}
+		else if (koopa->GetState() == KOOPA_STATE_SHELL_STAND)
+		{
+			vy = -0.4f;
+			koopa->SetYWhenColide();
+			if (vx > 0)
+			{
+				koopa->SetShellStateMoveSpeedRight();
+				koopa->SetState(KOOPA_STATE_SHELL_MOVE);
+			};
+			if (vx < 0)
+			{
+				koopa->SetShellStateMoveSpeedLeft();
+				koopa->SetState(KOOPA_STATE_SHELL_MOVE);
+			}
+
+		}
+		else
+		{
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			koopa->SetYWhenColide();
+			koopa->SetState(KOOPA_STATE_SHELL_STAND);
+		}
+	}
+	else // hit by koopas
+	{
+		if (koopa->GetState() != KOOPA_STATE_SHELL_STAND)
+		{
+			if (untouchable == 0)
+			{
+				if (level > MARIO_LEVEL_SMALL)
+				{
+					level = MARIO_LEVEL_SMALL;
+					StartUntouchable();
+				}
+				else
+				{
+					DebugOut(L">>> Mario DIE >>> \n");
+					SetState(MARIO_STATE_DIE);
+				}
+			}
+		}
+
+		if (koopa->GetState() == KOOPA_STATE_SHELL_STAND)
+		{
+			if (e->nx < 0)	koopa->SetShellStateMoveSpeedRight();
+			if (e->nx > 0)	koopa->SetShellStateMoveSpeedLeft();
+			koopa->SetState(KOOPA_STATE_SHELL_MOVE);
+			/*untouchable = 1;
+			untouchable_start = GetTickCount64() - 2500;*/
 		}
 	}
 }
@@ -131,13 +207,13 @@ void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)
 	CGame::GetInstance()->InitiateSwitchScene(p->GetSceneId());
 }
 
-/*void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
+void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
 {
 	CMushroom* mushroom = dynamic_cast<CMushroom*>(e->obj);
 	if (mushroom->GetType() == MUSHROOM_TYPE_RED)
 		SetLevel(MARIO_LEVEL_BIG);
 	e->obj->Delete();
-}*/
+}
 
 
 //
