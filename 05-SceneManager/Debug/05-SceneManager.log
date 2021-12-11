@@ -1,6 +1,15 @@
-﻿  PlayScene.cpp
+﻿  Brick.cpp
+  Game.cpp
+  Goomba.cpp
+  Koopa.cpp
+  Mario.cpp
+  Mushroom.cpp
+  PlayScene.cpp
 D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(86,20): warning C4018: '<': signed/unsigned mismatch
 D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
 D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(379,20): warning C4018: '<': signed/unsigned mismatch
 D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\05-SceneManager\PlayScene.cpp(404,20): warning C4018: '<': signed/unsigned mismatch
+  SampleKeyEventHandler.cpp
+  main.cpp
+  Generating Code...
   05-SceneManager.vcxproj -> D:\Docs\Y3S1\NhapMonPhatTrienGame_SE102.M11.PMCL\MegaLuigiSisters\Debug\05-SceneManager.exe

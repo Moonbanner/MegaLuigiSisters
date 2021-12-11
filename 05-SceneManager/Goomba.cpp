@@ -37,17 +37,12 @@ void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 
 	if (dynamic_cast<CGoomba*>(e->obj)) return;
-	/*if (dynamic_cast<CKoopa*>(e->obj))
-	{
-		CKoopa* koopa = dynamic_cast<CKoopa*>(e->obj);
-		if (koopa->GetState() == KOOPA_STATE_SHELL_MOVE)
-			SetState(GOOMBA_STATE_DIE);
-	}*/
 	if (!e->obj->IsBlocking()) return;
 	if (e->ny != 0)
 	{
-		if (state == GOOMBA_STATE_WALKING) vy = 0;
-		if (state == GOOMBA_STATE_WINGED) vy = -0.4f;
+		//if (state == GOOMBA_STATE_WALKING) 
+			vy = 0;
+		//if (state == GOOMBA_STATE_WINGED) vy = GOOMBA_JUMP_SPEED;
 	}
 	else if (e->nx != 0)
 	{
@@ -73,7 +68,7 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CGoomba::Render()
 {
-	int aniId = ID_ANI_GOOMBA_WALKING;
+	int aniId = ID_ANI_GOOMBA_WINGLESS;
 	if (state == GOOMBA_STATE_WINGED)
 	{
 		aniId = ID_ANI_GOOMBA_WINGED;
@@ -99,7 +94,7 @@ void CGoomba::SetState(int state)
 		vy = 0;
 		ay = 0;
 		break;
-	case GOOMBA_STATE_WALKING:
+	case GOOMBA_STATE_WINGLESS:
 		if (vx == 0)
 		{
 			vx = -GOOMBA_WALKING_SPEED;

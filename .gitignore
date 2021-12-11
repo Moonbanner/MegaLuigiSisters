@@ -1,0 +1,4 @@
+#git will ignore the following directories:
+Debug/
+.vs/
+05-SceneManager/Debug

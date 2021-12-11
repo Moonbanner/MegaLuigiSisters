@@ -76,7 +76,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 		{
 			if (goomba->GetState() == GOOMBA_STATE_WINGED)
 			{
-				goomba->SetState(GOOMBA_STATE_WALKING);
+				goomba->SetState(GOOMBA_STATE_WINGLESS);
 				vy = -MARIO_JUMP_DEFLECT_SPEED;
 			}
 			else
